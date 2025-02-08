@@ -1,1 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Length Checker</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython.min.js"></script>
+</head>
+<body onload="brython()">
+    <h2>Check Your Name Length</h2>
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <button onclick="check_name()">Check</button>
+    <p id="output"></p>
+
+    <script type="text/python">
+        from browser import document
+
+        def check_name(event=None):
+            user = document["nameInput"].value
+            characters = len(user)
+            document["output"].text = f"Your name is {characters} characters long."
+
+        document["nameInput"].bind("keyup", check_name)  # Updates as user types
+    </script>
+</body>
+</html>
 
